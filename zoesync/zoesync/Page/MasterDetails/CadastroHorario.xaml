@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zoesync.Page.MasterDetails.CadastroHorario">
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="Novo Horário">
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Data" Font="Large" VerticalOptions="End" HorizontalOptions="Start"></Label>
+                            <DatePicker  HorizontalOptions="EndAndExpand"  Format="dd/MM/yyyy" ></DatePicker>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Início" Font="Large" VerticalOptions="End" HorizontalOptions="Start"></Label>
+                            <TimePicker  HorizontalOptions="EndAndExpand"></TimePicker>
+                        </StackLayout>
+                    </ViewCell>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Término" Font="Large" VerticalOptions="End" HorizontalOptions="Start"></Label>
+                            <TimePicker  HorizontalOptions="EndAndExpand"></TimePicker>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Término" Font="Large" VerticalOptions="End" HorizontalOptions="Start"></Label>
+                            <TimePicker  HorizontalOptions="EndAndExpand"></TimePicker>
+                        </StackLayout>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zoesync.Page.MasterDetails.CadastroMedico">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lblBemVindo" Text="Cadastro Médico" 
+           Font="Large"
+           FontAttributes="Bold"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+
+
+            <Entry x:Name="txtNome"   Placeholder="Nome"></Entry>
+            <Entry x:Name="txtCRM" Placeholder="CRM"></Entry>
+
+            <Picker x:Name="cmbUf"   Title="UF">
+                <Picker.Items>
+                    <x:String>AC</x:String>
+                    <x:String>AL</x:String>
+                    <x:String>AP</x:String>
+                    <x:String>AM</x:String>
+                    <x:String>BA</x:String>
+                    <x:String>CE</x:String>
+                    <x:String>DF</x:String>
+                    <x:String>ES</x:String>
+                    <x:String>GO</x:String>
+                    <x:String>MA</x:String>
+                    <x:String>MT</x:String>
+                    <x:String>MS</x:String>
+                    <x:String>MG</x:String>
+                    <x:String>PA</x:String>
+                    <x:String>PB</x:String>
+                    <x:String>PR</x:String>
+                    <x:String>PE</x:String>
+                    <x:String>PI</x:String>
+                    <x:String>RJ</x:String>
+                    <x:String>RN</x:String>
+                    <x:String>RS</x:String>
+                    <x:String>RO</x:String>
+                    <x:String>RR</x:String>
+                    <x:String>SP</x:String>
+                    <x:String>SE</x:String>
+                    <x:String>TO</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Picker x:Name="cmbEspecialidade" Title="Especialidade">
+                <Picker.Items>
+                    <x:String>Urologista</x:String>
+                    <x:String>Clínico Geral</x:String>
+                    <x:String>Ginecologista</x:String>
+                    <x:String>Ortopedista</x:String>
+                </Picker.Items>
+            </Picker>
+
+            <Entry x:Name="txtFone" Keyboard="Numeric" Placeholder="Fone"></Entry>
+
+            <Entry x:Name="txtEmail"  Keyboard="Email"  Placeholder="Email"></Entry>
+            <Entry x:Name="txtSenha" IsPassword="True"  Placeholder="Senha"></Entry>
+
+
+            <Button  x:Name="btnConfirmar"   Text="Confirmar"  HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnConfirmar_Clicked"></Button>
+            <Button x:Name="btnCancelar" Text="Cancelar" HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnCancelar_Clicked"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

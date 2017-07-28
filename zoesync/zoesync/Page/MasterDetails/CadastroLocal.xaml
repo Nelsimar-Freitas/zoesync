@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zoesync.Page.MasterDetails.CadastroLocal">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="lblBemVindo" Text="Novo Local" 
+           Font="Large"
+           FontAttributes="Bold"
+           VerticalOptions="Center" 
+           HorizontalOptions="Center" />
+
+            <Entry x:Name="txtNome"   Placeholder="Nome do Local"></Entry>
+            <Entry x:Name="txtEndereco" Placeholder="Endereço"></Entry>
+            <Entry x:Name="txtFone" Keyboard="Numeric" Placeholder="Fone"></Entry>
+
+            <Button x:Name="btnAdicionar"   Text="Adicionar"  HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnAdicionar_Clicked"></Button>
+            <Button x:Name="btnCancelar" Text="Cancelar" HorizontalOptions="Center" VerticalOptions="Center" Clicked="btnCancelar_Clicked"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="zoesync.Page.SplashScreenPage"
+             BackgroundImage="background.jpg">   
+    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="10">
+        <Image Source="logo.png" 
+               x:Name="logoImage" 
+               VerticalOptions="CenterAndExpand"
+               WidthRequest="226" 
+               HeightRequest="226">            
+        </Image>
+        <ActivityIndicator x:Name="Indicator" 
+                           Color="#A13FB5" 
+                           VerticalOptions="CenterAndExpand" 
+                           Margin="0,45,0,0"/>
+    </StackLayout>
+</ContentPage>
