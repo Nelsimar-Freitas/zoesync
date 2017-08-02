@@ -26,5 +26,8 @@ namespace WcfService1
         }
     
         public virtual DbSet<medico> medico { get; set; }
+        public virtual DbSet<agenda> agenda { get; set; }
+        public virtual DbSet<especialidade> especialidade { get; set; }
+        public virtual DbSet<local> local { get; set; }
     }
 }

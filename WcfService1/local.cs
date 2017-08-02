@@ -12,27 +12,22 @@ namespace WcfService1
     using System;
     using System.Collections.Generic;
     
-    public partial class medico
+    public partial class local
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public medico()
+        public local()
         {
             this.agenda = new HashSet<agenda>();
-            this.local = new HashSet<local>();
         }
     
-        public int idMedico { get; set; }
-        public string NomeMedico { get; set; }
-        public string CRM { get; set; }
-        public int idEspecialidade { get; set; }
-        public string UF { get; set; }
-        public string Email { get; set; }
-        public string Fone { get; set; }
+        public int idlocal { get; set; }
+        public string Nome { get; set; }
+        public string Endereco { get; set; }
+        public string Telefone { get; set; }
+        public Nullable<int> idMedico { get; set; }
     
+        public virtual medico medico { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<agenda> agenda { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<local> local { get; set; }
-        public virtual especialidade especialidade { get; set; }
     }
 }

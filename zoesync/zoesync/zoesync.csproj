@@ -43,6 +43,7 @@
     <Compile Include="Classes\ImagePathResources.cs" />
     <Compile Include="ImageResourceExtension.cs" />
     <Compile Include="Models\FacebookProfile.cs" />
+    <Compile Include="Models\Medico.cs" />
     <Compile Include="Page\FacebookProfilePage.xaml.cs">
       <DependentUpon>FacebookProfilePage.xaml</DependentUpon>
     </Compile>
@@ -82,6 +83,7 @@
     <Compile Include="ServiceApp\FacebookProfile.cs" />
     <Compile Include="ServiceApp\FacebookServices.cs" />
     <Compile Include="ServiceApp\ServiceAppLogin.cs" />
+    <Compile Include="Services\DatabaseService.cs" />
     <Compile Include="Services\FacebookServices.cs" />
     <Compile Include="ViewModels\FacebookViewModel.cs" />
     <Compile Include="ViewModel\Base\BaseViewModel.cs" />

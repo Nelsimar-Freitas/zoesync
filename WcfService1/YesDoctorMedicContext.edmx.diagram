@@ -6,6 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="255dffaa21fd4774ab8ec9ec634ce096" Name="Diagram1">
         <EntityTypeShape EntityType="yesdoctormedicModel.medico" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="yesdoctormedicModel.agenda" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="yesdoctormedicModel.especialidade" Width="1.5" PointX="4.5" PointY="0.75" />
+        <EntityTypeShape EntityType="yesdoctormedicModel.local" Width="1.5" PointX="3" PointY="8.375" />
+        <AssociationConnector Association="yesdoctormedicModel.agendaMedico" />
+        <AssociationConnector Association="yesdoctormedicModel.localMedico" />
+        <AssociationConnector Association="yesdoctormedicModel.medicoEspecialidade" />
+        <AssociationConnector Association="yesdoctormedicModel.agendaLocal" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

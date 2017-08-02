@@ -4,20 +4,119 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="yesdoctormedicModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="yesdoctormedicModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="agenda">
+          <Key>
+            <PropertyRef Name="idagenda" />
+          </Key>
+          <Property Name="idagenda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime" Precision="0" />
+          <Property Name="DataInicio" Type="datetime" Precision="0" />
+          <Property Name="DataFim" Type="datetime" Precision="0" />
+          <Property Name="Status" Type="varchar" MaxLength="45" />
+          <Property Name="idMedico" Type="int" Nullable="false" />
+          <Property Name="idLocal" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="especialidade">
+          <Key>
+            <PropertyRef Name="idespecialidade" />
+          </Key>
+          <Property Name="idespecialidade" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="local">
+          <Key>
+            <PropertyRef Name="idlocal" />
+          </Key>
+          <Property Name="idlocal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="255" />
+          <Property Name="Endereco" Type="varchar" MaxLength="600" />
+          <Property Name="Telefone" Type="varchar" MaxLength="45" />
+          <Property Name="idMedico" Type="int" />
+        </EntityType>
         <EntityType Name="medico">
           <Key>
             <PropertyRef Name="idMedico" />
           </Key>
-          <Property Name="idMedico" Type="int" Nullable="false" />
+          <Property Name="idMedico" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NomeMedico" Type="varchar" MaxLength="45" />
           <Property Name="CRM" Type="varchar" MaxLength="45" />
+          <Property Name="UF" Type="varchar" MaxLength="45" />
+          <Property Name="Email" Type="varchar" MaxLength="255" />
+          <Property Name="Fone" Type="varchar" MaxLength="45" />
+          <Property Name="idEspecialidade" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="agendaLocal">
+          <End Role="local" Type="Self.local" Multiplicity="1" />
+          <End Role="agenda" Type="Self.agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="local">
+              <PropertyRef Name="idlocal" />
+            </Principal>
+            <Dependent Role="agenda">
+              <PropertyRef Name="idLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="especialidadeMedico">
+          <End Role="especialidade" Type="Self.especialidade" Multiplicity="1" />
+          <End Role="medico" Type="Self.medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="especialidade">
+              <PropertyRef Name="idespecialidade" />
+            </Principal>
+            <Dependent Role="medico">
+              <PropertyRef Name="idEspecialidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="localMedico">
+          <End Role="medico" Type="Self.medico" Multiplicity="0..1" />
+          <End Role="local" Type="Self.local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="local">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="medicoAgenda">
+          <End Role="medico" Type="Self.medico" Multiplicity="1" />
+          <End Role="agenda" Type="Self.agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="agenda">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="yesdoctormedicModelStoreContainer">
+          <EntitySet Name="agenda" EntityType="Self.agenda" Schema="yesdoctormedic" store:Type="Tables" />
+          <EntitySet Name="especialidade" EntityType="Self.especialidade" Schema="yesdoctormedic" store:Type="Tables" />
+          <EntitySet Name="local" EntityType="Self.local" Schema="yesdoctormedic" store:Type="Tables" />
           <EntitySet Name="medico" EntityType="Self.medico" Schema="yesdoctormedic" store:Type="Tables" />
+          <AssociationSet Name="agendaLocal" Association="Self.agendaLocal">
+            <End Role="local" EntitySet="local" />
+            <End Role="agenda" EntitySet="agenda" />
+          </AssociationSet>
+          <AssociationSet Name="especialidadeMedico" Association="Self.especialidadeMedico">
+            <End Role="especialidade" EntitySet="especialidade" />
+            <End Role="medico" EntitySet="medico" />
+          </AssociationSet>
+          <AssociationSet Name="localMedico" Association="Self.localMedico">
+            <End Role="medico" EntitySet="medico" />
+            <End Role="local" EntitySet="local" />
+          </AssociationSet>
+          <AssociationSet Name="medicoAgenda" Association="Self.medicoAgenda">
+            <End Role="medico" EntitySet="medico" />
+            <End Role="agenda" EntitySet="agenda" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="yesdoctormedicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -28,10 +127,118 @@
           <Property Name="idMedico" Type="Int32" Nullable="false" />
           <Property Name="NomeMedico" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="CRM" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idEspecialidade" Type="Int32" Nullable="false" />
+          <Property Name="UF" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Fone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="agenda" Relationship="yesdoctormedicModel.agendaMedico" FromRole="medico" ToRole="agenda" />
+          <NavigationProperty Name="local" Relationship="yesdoctormedicModel.localMedico" FromRole="medico" ToRole="local" />
+          <NavigationProperty Name="especialidade" Relationship="yesdoctormedicModel.medicoEspecialidade" FromRole="medico" ToRole="especialidade" />
         </EntityType>
         <EntityContainer Name="yesdoctormedicEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="medico" EntityType="Self.medico" />
+          <EntitySet Name="agenda" EntityType="yesdoctormedicModel.agenda" />
+          <EntitySet Name="especialidade" EntityType="yesdoctormedicModel.especialidade" />
+          <EntitySet Name="local" EntityType="yesdoctormedicModel.local" />
+          <AssociationSet Name="agendaMedico" Association="yesdoctormedicModel.agendaMedico">
+            <End Role="medico" EntitySet="medico" />
+            <End Role="agenda" EntitySet="agenda" />
+          </AssociationSet>
+          <AssociationSet Name="localMedico" Association="yesdoctormedicModel.localMedico">
+            <End Role="medico" EntitySet="medico" />
+            <End Role="local" EntitySet="local" />
+          </AssociationSet>
+          <AssociationSet Name="medicoEspecialidade" Association="yesdoctormedicModel.medicoEspecialidade">
+            <End Role="especialidade" EntitySet="especialidade" />
+            <End Role="medico" EntitySet="medico" />
+          </AssociationSet>
+          <AssociationSet Name="agendaLocal" Association="yesdoctormedicModel.agendaLocal">
+            <End Role="local" EntitySet="local" />
+            <End Role="agenda" EntitySet="agenda" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="agenda">
+          <Key>
+            <PropertyRef Name="idagenda" />
+          </Key>
+          <Property Name="idagenda" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" />
+          <Property Name="DataInicio" Type="DateTime" />
+          <Property Name="DataFim" Type="DateTime" />
+          <Property Name="Status" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idMedico" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="medico" Relationship="yesdoctormedicModel.agendaMedico" FromRole="agenda" ToRole="medico" />
+          <Property Name="idLocal" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="local" Relationship="yesdoctormedicModel.agendaLocal" FromRole="agenda" ToRole="local" />
+        </EntityType>
+        <EntityType Name="especialidade">
+          <Key>
+            <PropertyRef Name="idespecialidade" />
+          </Key>
+          <Property Name="idespecialidade" Type="Int32" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="medico" Relationship="yesdoctormedicModel.medicoEspecialidade" FromRole="especialidade" ToRole="medico" />
+        </EntityType>
+        <EntityType Name="local">
+          <Key>
+            <PropertyRef Name="idlocal" />
+          </Key>
+          <Property Name="idlocal" Type="Int32" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="idMedico" Type="Int32" />
+          <NavigationProperty Name="medico" Relationship="yesdoctormedicModel.localMedico" FromRole="local" ToRole="medico" />
+          <NavigationProperty Name="agenda" Relationship="yesdoctormedicModel.agendaLocal" FromRole="local" ToRole="agenda" />
+        </EntityType>
+        <Association Name="agendaMedico">
+          <End Type="yesdoctormedicModel.medico" Role="medico" Multiplicity="1" />
+          <End Type="yesdoctormedicModel.agenda" Role="agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="agenda">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="localMedico">
+          <End Type="yesdoctormedicModel.medico" Role="medico" Multiplicity="0..1" />
+          <End Type="yesdoctormedicModel.local" Role="local" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="medico">
+              <PropertyRef Name="idMedico" />
+            </Principal>
+            <Dependent Role="local">
+              <PropertyRef Name="idMedico" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="medicoEspecialidade">
+          <End Type="yesdoctormedicModel.especialidade" Role="especialidade" Multiplicity="1" />
+          <End Type="yesdoctormedicModel.medico" Role="medico" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="especialidade">
+              <PropertyRef Name="idespecialidade" />
+            </Principal>
+            <Dependent Role="medico">
+              <PropertyRef Name="idEspecialidade" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="agendaLocal">
+          <End Type="yesdoctormedicModel.local" Role="local" Multiplicity="1" />
+          <End Type="yesdoctormedicModel.agenda" Role="agenda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="local">
+              <PropertyRef Name="idlocal" />
+            </Principal>
+            <Dependent Role="agenda">
+              <PropertyRef Name="idLocal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -41,9 +248,45 @@
           <EntitySetMapping Name="medico">
             <EntityTypeMapping TypeName="yesdoctormedicModel.medico">
               <MappingFragment StoreEntitySet="medico">
+                <ScalarProperty Name="Fone" ColumnName="Fone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UF" ColumnName="UF" />
+                <ScalarProperty Name="idEspecialidade" ColumnName="idEspecialidade" />
                 <ScalarProperty Name="idMedico" ColumnName="idMedico" />
                 <ScalarProperty Name="NomeMedico" ColumnName="NomeMedico" />
                 <ScalarProperty Name="CRM" ColumnName="CRM" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="agenda">
+            <EntityTypeMapping TypeName="yesdoctormedicModel.agenda">
+              <MappingFragment StoreEntitySet="agenda">
+                <ScalarProperty Name="idLocal" ColumnName="idLocal" />
+                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DataFim" ColumnName="DataFim" />
+                <ScalarProperty Name="DataInicio" ColumnName="DataInicio" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="idagenda" ColumnName="idagenda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="especialidade">
+            <EntityTypeMapping TypeName="yesdoctormedicModel.especialidade">
+              <MappingFragment StoreEntitySet="especialidade">
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+                <ScalarProperty Name="idespecialidade" ColumnName="idespecialidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="local">
+            <EntityTypeMapping TypeName="yesdoctormedicModel.local">
+              <MappingFragment StoreEntitySet="local">
+                <ScalarProperty Name="idMedico" ColumnName="idMedico" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="idlocal" ColumnName="idlocal" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

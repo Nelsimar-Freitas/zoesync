@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WcfService1.Classes;
 
 namespace WcfService1
 {
@@ -14,10 +15,11 @@ namespace WcfService1
     {
         [OperationContract]
         [WebGet]
-        string GetDataUsingMethod(string value);
+        List<RetornoMedico> RetornaMedicos();
 
         [OperationContract]
-        [WebGet(UriTemplate = "/GetData/{value}")]
-        string GetDatausingURI(string value);
+        [WebInvoke(Method = "POST", UriTemplate = "Medico")]
+        bool IncluirMedico(RetornoMedico medico);
+
     }
 }
