@@ -17,7 +17,7 @@ namespace zoesync.Page.MasterDetails
                 Padding = new Thickness( 10, 36, 0, 5 ),
                 Content = new Label
                 {
-                    TextColor = Color.FromHex( "A13FB5" ),
+                    TextColor = Color.FromHex("3F51B5"),
                     Text = "MENU",
                 }
             };

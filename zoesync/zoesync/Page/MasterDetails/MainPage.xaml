@@ -5,21 +5,28 @@
 
     <MasterDetailPage.Master>
         <ContentPage Title="Menu"
-                     BackgroundColor="#e8e8e8">
+                     BackgroundColor="#3F51B5">
+            
+            <!-- Cores: 
+                #3F51B5 Indigo(azul) 
+                #e8e8e8 Cinza do menu
+            -->
 
             <StackLayout Orientation="Vertical">
 
                <!--PARTE SUPERIOR DO MENU LATERAL-->
                 <StackLayout 
-                    BackgroundColor="#A13FB5"
+                    BackgroundColor="#3F51B5"
                     HeightRequest="95">                    
-                    <Label Text="Zoesync"
+                    <Label Text="YesDoctor"
                            FontSize="20"
                            VerticalOptions="CenterAndExpand"
                            TextColor="White"
+                           BackgroundColor="#3F51B5"
                            HorizontalOptions="Center"/>
                 </StackLayout>
 
+                <!--PARTE DA LISTA DE ITENS-->
                 <ListView x:Name="navigationDrawerList"
                           RowHeight="60"
                           SeparatorVisibility="None"

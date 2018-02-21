@@ -29,7 +29,7 @@ namespace zoesync.Page.MasterDetails
             {
                 Title = "Clínica XYZ",
                 IconSource = "opportunities.png",
-                TargetType = typeof(HomePage)
+                TargetType = typeof(CadastroLocal)
             });
 
             this.Add(new MenuItem()
@@ -42,7 +42,7 @@ namespace zoesync.Page.MasterDetails
             this.Add (new MenuItem () {
 				Title = "Sair",
 				IconSource = "opportunities.png",
-				TargetType = typeof(HomePage)
+				TargetType = typeof(LoginPage)
 			});
 		}
 	}

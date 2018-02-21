@@ -15,8 +15,8 @@ namespace zoesync.Page
         {                
             InitializeComponent();
 
-            Title = "Contracts";
-            Icon = "Contracts.png";
+            Title = "Yes Doctor";
+            //Icon = "Contracts.png";
 
             BindingContext = new HomePageViewModel();
         }

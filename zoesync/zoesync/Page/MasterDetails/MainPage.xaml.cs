@@ -31,7 +31,7 @@ namespace zoesync.Page.MasterDetails
         {             
             var item = (MenuItem)e.SelectedItem;
             Type page = item.TargetType;
-
+            
             Detail = new NavigationPage( (Xamarin.Forms.Page)Activator.CreateInstance( page ) );
             IsPresented = false;
         }

@@ -6,8 +6,8 @@ using Android.OS;
 namespace zoesync.Droid
 {
     [Activity(
-        Label = "zoesync", 
-        Icon = "@drawable/ic_launcher", 
+        Label = "YesDoctor", 
+        //Icon = "@drawable/ic_launcher", 
         Theme = "@style/MainTheme",
         MainLauncher = true, 
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

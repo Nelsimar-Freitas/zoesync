@@ -13,7 +13,7 @@ namespace zoesync.Page.MasterDetails
 			BackgroundColor = Color.Transparent;
             RowHeight = 60;
             SeparatorVisibility = SeparatorVisibility.None;
-            BackgroundColor = Color.FromHex("e8e8e8");
+            BackgroundColor = Color.FromHex("#3F51B5");
 
 
             var cell = new DataTemplate (typeof(ImageCell));
